@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maayong Gabi!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* 1. The Background (Desktop View) */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            /* Dark background outside the phone area so the design pops */
+            background-color: #2c2c2c; 
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 2. The Phone Screen Container */
+        .phone-screen {
+            position: relative;
+            width: 100%;
+            max-width: 414px; /* Width of a large iPhone */
+            height: 100vh;    /* Full height of the screen */
+            max-height: 900px; /* Cap height on giant desktop screens */
+            background-color: #FFFDE7; /* Your yellow background */
+            overflow: hidden; /* Clips anything sticking out */
+            box-shadow: 0 0 50px rgba(0,0,0,0.5); /* Nice shadow effect */
+        }
+
+        /* 3. Decorative Elements (Adjusted for Mobile) */
+        .decoration {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .top-decor {
+            top: 0;
+            left: 0;
+            width: 100%; /* Spans full width of phone */
+            z-index: 1;
+        }
+
+        .bottom-clouds {
+            bottom: 0;
+            left: 0;
+            width: 100%; /* Slightly wider than screen to ensure coverage */
+            height: auto;
+            z-index: 2;
+        }
+
+        .decor1 {
+            bottom: 0;
+            left: 0;
+            width: 100%; /* Slightly wider than screen to ensure coverage */
+            height: auto;
+            z-index: 2;
+        }
+
+        .cat {
+            bottom: 80px; /* Adjusted to sit nicely on mobile clouds */
+            left: -10px;  /* Hugs the left edge */
+            width: 140px;
+            z-index: 3;
+            transform: rotate(-5deg);
+        }
+
+        .dog {
+            bottom: 90px;   
+            right: -10px; /* Hugs the right edge */
+            width: 110px;
+            z-index: 3;
+            transform: rotate(10deg);
+        }
+
+        /* 4. Center Content */
+        .center-container {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 4;
+            width: 90%; /* Use almost full width on mobile */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .splash-bg {
+            position: absolute;
+            width: 120%; /* Make splash big enough for text */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            opacity: 0.9;
+        }
+
+        h1 {
+            font-size: 2.5rem; /* Slightly smaller for mobile screens */
+            color: #4E342E;
+            margin: 0;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #5D4037;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* 5. Interactive Button */
+        .play-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            -webkit-tap-highlight-color: transparent; /* Removes blue box on mobile tap */
+        }
+
+        .play-btn img {
+            width: 70px;
+        }
+
+        .play-btn:active {
+            transform: scale(0.9); /* Button presses down when tapped */
+        }
+        
+        /* 6. Media Query: If the screen is ALREADY a phone */
+        @media screen and (max-width: 500px) {
+            body {
+                background-color: #FFFDE7; /* Remove dark borders on actual phone */
+            }
+            .phone-screen {
+                box-shadow: none; /* Remove shadow on actual phone */
+                max-height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-screen">
+        <img src="top-decor.png" class="decoration top-decor" alt="decoration">
+        <img src="images/clouds.png" class="decoration bottom-clouds" alt="clouds">
+        
+        <img src="images/cat1.png" class="decoration cat" alt="Cat">
+        <img src="images/dog.png" class="decoration dog" alt="Dog">
+        <img src="images/decor1.png" class="decoration decor1" alt="Decor">
+
+        <div class="center-container">
+            <img src="images/splash.png" class="splash-bg" alt="Splash">
+            <h1>Maayong Gabi!</h1>
+            <p>Click me!!</p>
+            
+            <button class="play-btn" onclick="handleClick()">
+                <img src="button.png" alt="Play">
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function handleClick() {
+            alert("Hello from the mobile site!");
+        }
+    </script>
+
+</body>
+</html>
