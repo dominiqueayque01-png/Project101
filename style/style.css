@@ -1,0 +1,219 @@
+        /* 1. The Background (Desktop View) */
+
+        .fuzzy-bubbles-regular {
+  font-family: "Fuzzy Bubbles", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fuzzy-bubbles-bold {
+  font-family: "Fuzzy Bubbles", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            /* Dark background outside the phone area so the design pops */
+            background-color: #2c2c2c; 
+            font-family: 'Fuzzy Bubbles', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 2. The Phone Screen Container */
+        .phone-screen {
+            position: relative;
+            width: 100%;
+            max-width: 414px; /* Width of a large iPhone */
+            height: 100vh;    /* Full height of the screen */
+            max-height: 900px; /* Cap height on giant desktop screens */
+            background-color: #FFFDE7; /* Your yellow background */
+            overflow: hidden; /* Clips anything sticking out */
+            box-shadow: 0 0 50px rgba(0,0,0,0.5); /* Nice shadow effect */
+        }
+
+        /* 3. Decorative Elements (Adjusted for Mobile) */
+        .decoration {
+            position: absolute;
+            pointer-events: none;
+            
+        }
+
+        .top-decor {
+            top: 0;
+            left: 0;
+            width: 100%; /* Spans full width of phone */
+            z-index: 1;
+            transform: rotate(180deg);
+            display: inline-block;
+
+        }
+
+        .top-left-decor {
+            top: 0;
+            left: 0;
+            width: 50%; 
+            z-index: 1;
+            display: inline-block;
+            transform: rotate(180deg);
+            margin: none;
+
+        }
+
+        .bottom-right-decor {
+            bottom: 0;
+            right: 0;
+            width: 50%; 
+            z-index: 1;
+            display: inline-block;
+            margin: none;
+
+        }
+
+        .bottom-clouds {
+            bottom: 0;
+            left: 0;
+            width: 130%; /* Slightly wider than screen to ensure coverage */
+            height: auto;
+            z-index: 2;
+        }
+
+        .top-clouds {
+            top: 0;
+            left: 0;
+            width: 130%; /* Slightly wider than screen to ensure coverage */
+            height: auto;
+            z-index: 2;
+                        transform: rotate(180deg);
+
+        }
+
+        .bottom-clouds:hover{
+            transform: scale(1.05);
+            transition: transform 0.5s ease;
+        }
+
+        .decor1 {
+            bottom: 0;
+            left: 0;
+            width: 100%; /* Slightly wider than screen to ensure coverage */
+            height: auto;
+            z-index: 1;
+        }
+
+        .pow1{
+            top: 150px;
+            left: -37px;
+            width: 50%;
+            height: auto;
+            z-index: 5;
+            transform: rotate(-35deg);
+
+        }
+
+        .pow2{
+            top: 370px;
+            right: 10px;
+            width: 40%;
+            height: auto;
+            z-index: 5;
+            transform: rotate(135deg);
+        }
+
+        .cat {
+            bottom: 120px; /* Adjusted to sit nicely on mobile clouds */
+            left: -40px;  /* Hugs the left edge */
+            width: 250px;
+            z-index: 5;
+            transform: rotate(-15deg);
+        }
+
+        .dog {
+            bottom: 335px;   
+            right: -10px; /* Hugs the right edge */
+            width: 160px;
+            z-index: 5;
+            transform: rotate(10deg);
+        }
+
+        
+
+        /* 4. Center Content */
+        .center-container {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 4;
+            width: 90%; /* Use almost full width on mobile */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .splash-bg {
+            position: absolute;
+            width: 120%; /* Make splash big enough for text */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            opacity: 0.9;
+        }
+
+        h1 {
+            font-family: "Fuzzy Bubbles";
+            font-size: 2.1rem; /* Slightly smaller for mobile screens */
+            color: #4E342E;
+            margin: 0;
+            margin-bottom: 1px;
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #5D4037;
+            font-weight: bold;
+            margin-bottom: 20px;
+            margin-top: 1px;
+        }
+
+        /* 5. Interactive Button */
+        .play-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            -webkit-tap-highlight-color: transparent; /* Removes blue box on mobile tap */
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1); /* Button grows slightly on hover */
+        }
+
+        .play-btn img {
+            width: 80px;
+        }
+
+        .play-btn:active {
+            transform: scale(0.9); /* Button presses down when tapped */
+        }
+        
+        /* 6. Media Query: If the screen is ALREADY a phone */
+        @media screen and (max-width: 500px) {
+            body {
+                background-color: #FFFDE7; /* Remove dark borders on actual phone */
+            }
+            .phone-screen {
+                box-shadow: none; /* Remove shadow on actual phone */
+                max-height: 100vh;
+            }
+        }
+   
