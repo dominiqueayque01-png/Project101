@@ -1,0 +1,26 @@
+.sky {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.cloud-track {
+  display: flex;
+  width: max-content;
+  animation: cloudLoop 20s linear infinite;
+}
+
+.cloud-track img {
+  width: 200px;
+  margin: none;
+  opacity: 0.8;
+}
+
+@keyframes cloudLoop {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

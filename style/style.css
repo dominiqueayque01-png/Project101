@@ -1,16 +1,16 @@
         /* 1. The Background (Desktop View) */
 
         .fuzzy-bubbles-regular {
-  font-family: "Fuzzy Bubbles", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
+            font-family: "Fuzzy Bubbles", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
 
-.fuzzy-bubbles-bold {
-  font-family: "Fuzzy Bubbles", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
+        .fuzzy-bubbles-bold {
+            font-family: "Fuzzy Bubbles", sans-serif;
+            font-weight: 700;
+            font-style: normal;
+        }
 
 
         body {
@@ -18,7 +18,7 @@
             padding: 0;
             height: 100vh;
             /* Dark background outside the phone area so the design pops */
-            background-color: #2c2c2c; 
+            background-color: #2c2c2c;
             font-family: 'Fuzzy Bubbles', sans-serif;
             display: flex;
             justify-content: center;
@@ -29,71 +29,170 @@
         .phone-screen {
             position: relative;
             width: 100%;
-            max-width: 414px; /* Width of a large iPhone */
-            height: 100vh;    /* Full height of the screen */
-            max-height: 900px; /* Cap height on giant desktop screens */
-            background-color: #FFFDE7; /* Your yellow background */
-            overflow: hidden; /* Clips anything sticking out */
-            box-shadow: 0 0 50px rgba(0,0,0,0.5); /* Nice shadow effect */
+            max-width: 414px;
+            /* Width of a large iPhone */
+            height: 100vh;
+            /* Full height of the screen */
+            max-height: 900px;
+            /* Cap height on giant desktop screens */
+            background-color: #FFFDE7;
+            /* Your yellow background */
+            overflow: hidden;
+            /* Clips anything sticking out */
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            /* Nice shadow effect */
         }
 
         /* 3. Decorative Elements (Adjusted for Mobile) */
         .decoration {
             position: absolute;
             pointer-events: none;
-            
+
         }
 
         .top-decor {
             top: 0;
             left: 0;
-            width: 100%; /* Spans full width of phone */
+            width: 100%;
+            /* Spans full width of phone */
             z-index: 1;
             transform: rotate(180deg);
             display: inline-block;
+            animation: slideFromRight 1s ease-out forwards;
 
         }
 
         .top-left-decor {
             top: 0;
             left: 0;
-            width: 50%; 
+            width: 50%;
             z-index: 1;
             display: inline-block;
             transform: rotate(180deg);
             margin: none;
+            animation: slideFromLeft 1s ease-out forwards;
+        }
 
+        @keyframes slideFromLeft {
+            from {
+                transform: translateX(-50%) rotate(180deg);
+            }
+
+            to {
+                transform: translateX(0) rotate(180deg);
+            }
+        }
+
+        @keyframes slideFromRight {
+            from {
+                transform: translateX(50%) rotate(180deg);
+            }
+
+            to {
+                transform: translateX(0) rotate(180deg);
+            }
         }
 
         .bottom-right-decor {
             bottom: 0;
             right: 0;
-            width: 50%; 
+            width: 50%;
             z-index: 1;
             display: inline-block;
             margin: none;
+            animation: slideFromRight1 1s ease-out forwards;
+        }
 
+        @keyframes slideFromRight1 {
+            from {
+                transform: translateX(50%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideFromLeft1 {
+            from {
+                transform: translateX(-50%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
         }
 
         .bottom-clouds {
             bottom: 0;
             left: 0;
-            width: 130%; /* Slightly wider than screen to ensure coverage */
+            width: 130%;
+            /* Slightly wider than screen to ensure coverage */
             height: auto;
             z-index: 2;
+            animation:
+                popBounce 0.8s ease-out 0s 1,
+                slideBackAndForth 10s ease-in-out 0.8s infinite alternate;
         }
+
 
         .top-clouds {
+            position: absolute;
             top: 0;
             left: 0;
-            width: 130%; /* Slightly wider than screen to ensure coverage */
+
+            width: 130%;
             height: auto;
             z-index: 2;
-                        transform: rotate(180deg);
 
+
+            animation:
+                popBounce 0.8s ease-out 0s 1,
+                slideBackAndForth 10s ease-in-out 0.8s infinite alternate;
         }
 
-        .bottom-clouds:hover{
+
+        @keyframes popBounce {
+            0% {
+                transform: scale(0.95) translateY(-20px) translateX(-20%);
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.05) translateY(5px) translateX(-20%);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1) translateY(0) translateX(-20%);
+            }
+        }
+
+
+        @keyframes slideBackAndForth {
+            from {
+                transform: translateX(-20%);
+            }
+
+            to {
+                transform: translateX(-2%);
+            }
+        }
+
+
+
+
+
+
+
+
+
+        .bottom-clouds:hover {
+            transform: scale(1.05);
+            transition: transform 0.5s ease;
+        }
+
+        .bottom-clouds:hover {
             transform: scale(1.05);
             transition: transform 0.5s ease;
         }
@@ -101,47 +200,153 @@
         .decor1 {
             bottom: 0;
             left: 0;
-            width: 100%; /* Slightly wider than screen to ensure coverage */
+            width: 100%;
+            /* Slightly wider than screen to ensure coverage */
             height: auto;
             z-index: 1;
+            animation: slideFromLeft1 1s ease-out forwards;
         }
 
-        .pow1{
+        .pow1 {
             top: 150px;
             left: -37px;
             width: 50%;
             height: auto;
             z-index: 5;
             transform: rotate(-35deg);
-
+            animation: powpow 1s ease,
+                combo 1s ease 1s infinite alternate;
         }
 
-        .pow2{
+        @keyframes powpow {
+            0% {
+                transform: scale(0.5) rotate(-35deg);
+            }
+
+            50% {
+                transform: scale(1) rotate(-35deg);
+            }
+
+            100% {
+                transform: scale(0.9) rotate(-35deg);
+            }
+        }
+
+        @keyframes combo {
+            from {
+                transform: scale(0.9) rotate(-35deg);
+            }
+
+            to {
+                transform: scale(1) rotate(-35deg);
+            }
+        }
+
+
+
+        .pow2 {
             top: 370px;
             right: 10px;
             width: 40%;
             height: auto;
             z-index: 5;
             transform: rotate(135deg);
+            animation: powpow1 1s ease,
+                combo1 1s ease 1s infinite alternate;
         }
 
-        .cat {
-            bottom: 120px; /* Adjusted to sit nicely on mobile clouds */
-            left: -40px;  /* Hugs the left edge */
-            width: 250px;
-            z-index: 5;
-            transform: rotate(-15deg);
+        @keyframes powpow1 {
+            0% {
+                transform: scale(0.5) rotate(135deg);
+            }
+
+            50% {
+                transform: scale(1) rotate(135deg);
+            }
+
+            100% {
+                transform: scale(0.9) rotate(135deg);
+            }
+        }
+
+        @keyframes combo1 {
+            from {
+                transform: scale(0.9) rotate(135deg);
+            }
+
+            to {
+                transform: scale(1) rotate(135deg);
+            }
+        }
+
+.cat {
+  position: absolute;
+  bottom: 120px;
+  left: -20px;
+  width: 250px;
+  z-index: 5;
+  opacity: 1;
+
+  animation:
+    crawl 2s forwards,
+    spin 1s linear 2s; /* starts AFTER crawl */
+}
+
+
+
+        @keyframes catCrawlIn {
+            from {
+                transform: translateX(-300px) translateY(200px) rotate(-15deg);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateX(-60px) rotate(-15deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes crawl {
+            0% {
+                transform: translateY(200px) translateX(-300px) rotate(-15deg);
+            }
+
+            25% {
+                transform: translateY(150px) translateX(-225px);
+            }
+
+            50% {
+                transform: translateY(100px) translateX(-150px) rotate(-15deg);
+            }
+
+            75% {
+                transform: translateY(50px) translateX(-75px);
+            }
+
+            100% {
+                transform: translateY(0) translateX(0) rotate(-15deg);
+            }
+        }
+
+        @keyframes spin {
+        from {
+            transform: translateY(0) translateX(0) rotate(0deg);
+        }
+        to {
+            transform: translateY(0) translateX(0) rotate(345deg);
+        }
         }
 
         .dog {
-            bottom: 335px;   
-            right: -10px; /* Hugs the right edge */
+            bottom: 335px;
+            right: -10px;
+            /* Hugs the right edge */
             width: 160px;
             z-index: 5;
             transform: rotate(10deg);
         }
 
-        
+
 
         /* 4. Center Content */
         .center-container {
@@ -151,7 +356,8 @@
             transform: translate(-50%, -50%);
             text-align: center;
             z-index: 4;
-            width: 90%; /* Use almost full width on mobile */
+            width: 90%;
+            /* Use almost full width on mobile */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -159,7 +365,8 @@
 
         .splash-bg {
             position: absolute;
-            width: 120%; /* Make splash big enough for text */
+            width: 120%;
+            /* Make splash big enough for text */
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -169,11 +376,12 @@
 
         h1 {
             font-family: "Fuzzy Bubbles";
-            font-size: 2.1rem; /* Slightly smaller for mobile screens */
+            font-size: 2.1rem;
+            /* Slightly smaller for mobile screens */
             color: #4E342E;
             margin: 0;
             margin-bottom: 1px;
-            text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
             font-weight: bold;
         }
 
@@ -191,11 +399,29 @@
             border: none;
             cursor: pointer;
             transition: transform 0.2s ease;
-            -webkit-tap-highlight-color: transparent; /* Removes blue box on mobile tap */
+            -webkit-tap-highlight-color: transparent;
+            /* Removes blue box on mobile tap */
+            animation: pop 0.5s ease;
         }
 
+        @keyframes pop {
+            0% {
+                transform: scale(0.9);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+
         .play-btn:hover {
-            transform: scale(1.1); /* Button grows slightly on hover */
+            transform: scale(1.1);
+            /* Button grows slightly on hover */
         }
 
         .play-btn img {
@@ -203,17 +429,173 @@
         }
 
         .play-btn:active {
-            transform: scale(0.9); /* Button presses down when tapped */
+            transform: scale(0.9);
+            /* Button presses down when tapped */
         }
-        
+
         /* 6. Media Query: If the screen is ALREADY a phone */
         @media screen and (max-width: 500px) {
             body {
-                background-color: #FFFDE7; /* Remove dark borders on actual phone */
+                background-color: #FFFDE7;
+                /* Remove dark borders on actual phone */
             }
+
             .phone-screen {
-                box-shadow: none; /* Remove shadow on actual phone */
+                box-shadow: none;
+                /* Remove shadow on actual phone */
                 max-height: 100vh;
             }
         }
-   
+
+
+        :root {
+            --color: var(--yellow-5);
+            --shadow: var(--yellow-8);
+            --glare: hsl(0 0% 100% / 0.75);
+            --font-size: var(--font-size-fluid-3);
+            --transition: 0.2s;
+        }
+
+
+
+        a {
+            --padding: var(--size-2);
+            padding: var(--padding);
+            border-radius: var(--size-4);
+            text-decoration: none;
+            color: transparent;
+            position: relative;
+            transition: background 0.2s;
+        }
+
+        a:hover {
+            background: var(--gray-8);
+        }
+
+        span {
+            display: inline-block;
+            font-size: calc(var(--font-size) * 1.5);
+            font-weight: var(--font-weight-9);
+            transition: all 0.2s;
+            text-decoration: none;
+            text-shadow:
+                calc(var(--hover) * (var(--font-size) * -0)) calc(var(--hover) * (var(--font-size) * 0)) var(--shadow),
+                calc(var(--hover) * (var(--font-size) * -0.02)) calc(var(--hover) * (var(--font-size) * 0.02)) var(--shadow),
+                calc(var(--hover) * (var(--font-size) * -0.04)) calc(var(--hover) * (var(--font-size) * 0.04)) var(--shadow),
+                calc(var(--hover) * (var(--font-size) * -0.06)) calc(var(--hover) * (var(--font-size) * 0.06)) var(--shadow),
+                calc(var(--hover) * (var(--font-size) * -0.08)) calc(var(--hover) * (var(--font-size) * 0.08)) var(--shadow),
+                calc(var(--hover) * (var(--font-size) * -0.10)) calc(var(--hover) * (var(--font-size) * 0.10)) var(--shadow);
+            /*     calc(var(--hover) * -2px) calc(var(--hover) * 2px) var(--shadow),
+    calc(var(--hover) * -3px) calc(var(--hover) * 3px) var(--shadow),
+    calc(var(--hover) * -4px) calc(var(--hover) * 4px) var(--shadow), */
+            /*     calc(var(--hover) * -5px) calc(var(--hover) * 5px) var(--shadow); */
+            transform: translate(calc(var(--hover) * (var(--font-size) * 0.10)), calc(var(--hover) * (var(--font-size) * -0.10)));
+        }
+
+        span:last-of-type {
+            position: absolute;
+            inset: var(--padding);
+            background: linear-gradient(108deg,
+                    transparent 0 55%,
+                    var(--glare) 55% 60%,
+                    transparent 60% 70%,
+                    var(--glare) 70% 85%,
+                    transparent 85%) calc(var(--pos) * -200%) 0% / 200% 100%, var(--color);
+            -webkit-background-clip: text;
+            color: transparent;
+            z-index: 2;
+            text-shadow: none;
+            transform: translate(calc(var(--hover) * (var(--font-size) * 0.10)), calc(var(--hover) * (var(--font-size) * -0.10)));
+        }
+
+        span:last-of-type {
+            transition: transform 0.2s, background-position 0s;
+        }
+
+        a:hover span:last-of-type {
+            transition: transform 0.2s, background-position calc(var(--hover) * 1.5s) calc(var(--hover) * 0.25s);
+        }
+
+        a {
+            --hover: 0.4;
+            --pos: 0;
+        }
+
+        a:hover {
+            --hover: 1;
+            --pos: 1;
+        }
+
+        a:active {
+            --hover: 0;
+        }
+
+        a:active span:last-of-type {
+            --hover: 0;
+            --pos: 1;
+        }
+
+        a svg {
+            position: absolute;
+            z-index: 3;
+            width: calc(var(--font-size) * 0.5);
+            aspect-ratio: 1;
+        }
+
+        a svg path {
+            fill: var(--glare);
+        }
+
+        /* Animation for sparkles */
+
+        a:hover svg {
+            animation: sparkle 0.75s calc((var(--delay-step) * var(--d)) * 1s) both;
+        }
+
+        @keyframes sparkle {
+            50% {
+                transform: translate(-50%, -50%) scale(var(--s, 1));
+            }
+        }
+
+        a svg {
+            --delay-step: 0.15;
+            top: calc(var(--y, 50) * 1%);
+            left: calc(var(--x, 0) * 1%);
+            transform: translate(-50%, -50%) scale(0);
+        }
+
+        a svg:nth-of-type(1) {
+            --x: 0;
+            --y: 20;
+            --s: 1.1;
+            --d: 1;
+        }
+
+        a svg:nth-of-type(2) {
+            --x: 15;
+            --y: 80;
+            --s: 1.25;
+            --d: 2;
+        }
+
+        a svg:nth-of-type(3) {
+            --x: 45;
+            --y: 40;
+            --s: 1.1;
+            --d: 3;
+        }
+
+        a svg:nth-of-type(4) {
+            --x: 75;
+            --y: 60;
+            --s: 0.9;
+            --d: 2;
+        }
+
+        a svg:nth-of-type(5) {
+            --x: 100;
+            --y: 30;
+            --s: 0.8;
+            --d: 4;
+        }
