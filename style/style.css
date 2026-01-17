@@ -1,5 +1,12 @@
         /* 1. The Background (Desktop View) */
 
+        button,
+        a,
+        img {
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+        }
+
         .fuzzy-bubbles-regular {
             font-family: "Fuzzy Bubbles", sans-serif;
             font-weight: 400;
@@ -245,9 +252,9 @@
 
 
         .pow2 {
-            top: 370px;
-            right: 10px;
-            width: 40%;
+            top: 450px;
+            right: -10px;
+            width: 50%;
             height: auto;
             z-index: 5;
             transform: rotate(135deg);
@@ -279,33 +286,63 @@
             }
         }
 
-.cat {
-  position: absolute;
-  bottom: 120px;
-  left: -20px;
-  width: 250px;
-  z-index: 5;
-  opacity: 1;
+        /* 1. The Container (Button) - Handles Position & Floating */
+        .cat {
+            background: none;
+            border: none;
+            position: absolute;
+            bottom: 120px;
+            left: -20px;
+            width: 230px;
+            z-index: 999;
+            cursor: pointer;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
 
-  animation:
-    crawl 2s forwards,
-    spin 1s linear 2s; /* starts AFTER crawl */
-}
+            /* Removed the old spin-animation from here so it doesn't happen automatically */
+            animation:
+                crawl 2s forwards,
+                updown 3s ease-in-out 2s infinite alternate;
+        }
+
+        .cat img {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* Smooth transition if you stop spinning */
+            transition: transform 0.5s ease;
+        }
+
+        /* 2. THE CLICK INTERACTION */
+        /* When the button has 'spinning-active', spin the IMAGE inside */
+        .cat.spinning-active img {
+            animation: click-spin 0.3s linear infinite;
+            animation-fill-mode: forwards;
+            /* Stops the floating while spinning */
+        }
 
 
 
-        @keyframes catCrawlIn {
+        /* 3. Hover Effect */
+        .cat:hover {
+            transform: scale(1.1);
+            /* This scales the whole button (and the spinning image inside) */
+        }
+
+        /* 4. Keyframes */
+
+        /* The Spin for the click */
+        @keyframes click-spin {
             from {
-                transform: translateX(-300px) translateY(200px) rotate(-15deg);
-                opacity: 1;
+                transform: rotateY(0deg);
             }
 
             to {
-                transform: translateX(-60px) rotate(-15deg);
-                opacity: 1;
+                transform: rotateY(360deg);
             }
         }
 
+        /* Your original Entrance */
         @keyframes crawl {
             0% {
                 transform: translateY(200px) translateX(-300px) rotate(-15deg);
@@ -328,25 +365,100 @@
             }
         }
 
-        @keyframes spin {
-        from {
-            transform: translateY(0) translateX(0) rotate(0deg);
-        }
-        to {
-            transform: translateY(0) translateX(0) rotate(345deg);
-        }
+        /* Your original Floating */
+        @keyframes updown {
+            0% {
+                transform: translateY(0) translateX(0) rotate(-15deg);
+            }
+
+            50% {
+                transform: translateY(-20px) translateX(0) rotate(-15deg);
+            }
+
+            100% {
+                transform: translateY(0) translateX(0) rotate(-15deg);
+            }
         }
 
+        /* 1. The Button Container */
         .dog {
-            bottom: 335px;
+            position: absolute;
+            background: none;
+            border: none;
+            cursor: pointer;
+
+            /* POSITION: Anchored to the top-right now */
+            top: 25px;
+            /* Moves it high up! Adjust this number if needed */
             right: -10px;
-            /* Hugs the right edge */
+
             width: 160px;
-            z-index: 5;
+            z-index: 999;
+
+            /* Static tilt for the dog */
             transform: rotate(10deg);
+
+            /* Clean up mobile tap highlights */
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+
+            animation: dogcrawl 2s forwards,
+                updown1 3s ease-in-out 2s infinite alternate;
         }
 
+        @keyframes updown1 {
+            0% {
+                transform: translateY(0) translateX(0) rotate(15deg);
+            }
 
+            50% {
+                transform: translateY(-20px) translateX(0) rotate(15deg);
+            }
+
+            100% {
+                transform: translateY(0) translateX(0) rotate(15deg);
+            }
+        }
+
+        .dog img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        /* 2. THE SPIN (Reusing the OIIA OIIA keyframe) */
+        .dog.spinning-active img {
+            /* Uses the same "click-spin" animation we made for the cat */
+            animation: click-spin 0.3s linear infinite;
+        }
+
+        /* 3. Hover Effect */
+        .dog:hover {
+            transform: scale(1.1) rotate(10deg);
+            /* Keeps the tilt while growing */
+        }
+
+        @keyframes dogcrawl {
+            0% {
+                transform: translateY(10px) translateX(300px) rotate(15deg);
+            }
+
+            25% {
+                transform: translateY(7px) translateX(225px);
+            }
+
+            50% {
+                transform: translateY(5px) translateX(150px) rotate(15deg);
+            }
+
+            75% {
+                transform: translateY(3px) translateX(75px);
+            }
+
+            100% {
+                transform: translateY(0) translateX(0) rotate(15deg);
+            }
+        }
 
         /* 4. Center Content */
         .center-container {
@@ -364,14 +476,47 @@
         }
 
         .splash-bg {
+            /* ... keep your other settings ... */
             position: absolute;
-            width: 120%;
-            /* Make splash big enough for text */
-            top: 50%;
+            top: 60%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            width: 100%;
             z-index: -1;
-            opacity: 0.9;
+            transform: translate(-50%, -50%);
+
+            /* This runs the 'breathe' animation forever */
+            animation: breathe 6s ease-in-out infinite;
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(0.95) translateY(-20px) translateX(-20%)   ;
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.05) translateY(5px) translateX(-20%);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1) translateY(0) translateX(-20%);
+            }
+        }
+
+        @keyframes breathe {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            50% {
+                /* Gently grows slightly */
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
         }
 
         h1 {

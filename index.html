@@ -24,9 +24,17 @@
         </div>
         <img src="images/bottom-clouds.png" class="decoration bottom-clouds" alt="clouds">
         
-        <img src="images/cat1.png" class="decoration cat" alt="Cat">
-        <img src="images/dog.png" class="decoration dog" alt="Dog">
+        <audio id="cat-audio" src="audio/sodapap.mp3"></audio>
+        
+        <button class="cat" id="cat-btn" onclick="toggleSpin(this)">
+            <img src="images/cat1.png" alt="Cat">
+        </button>
 
+
+        <audio id="dog-audio" src="audio/apatu.mp3"></audio>
+        <button class="dog" id="dog-btn" onclick="toggleSpinDog(this)">
+          <img src="images/dog.png" alt="Dog">
+        </button>
         <img src="images/pow.png" class="decoration pow1" alt="Decor">
         <img src="images/pow.png" class="decoration pow2" alt="Decor">
 
@@ -35,9 +43,6 @@
         <!--End of header and footer design-->
         <div class="center-container">
             <img src="images/splash.png" class="splash-bg" alt="Splash">
-            <h1>Maayong Gabi!</h1>
-            <p>Click me!!</p>
-            
             <a href="#">
       <!-- Drop as many sparkles in as you need and scope the speed -->
       <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
