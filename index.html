@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maayong Gabi!</title>
+    <title>Wazzupp</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +14,9 @@
 <body>
 
     <div class="phone-screen">
+        <!--Audio of the page-->
+        <audio id="btn-sound" src="audio/FAHH.mp3"></audio>
+
         <!--Header and footer design-->
         <img src="images/decor1.png" class="decoration top-decor" alt="decoration">
         <img src="images/circles.png" class="decoration top-left-decor" alt="decoration">
@@ -35,8 +38,8 @@
         <button class="dog" id="dog-btn" onclick="toggleSpinDog(this)">
           <img src="images/dog.png" alt="Dog">
         </button>
-        <img src="images/pow.png" class="decoration pow1" alt="Decor">
-        <img src="images/pow.png" class="decoration pow2" alt="Decor">
+        <img src="images/pow.png" class="decoration pow1" id="pow1" alt="Decor">
+        <img src="images/pow.png" class="decoration pow2" id="pow2" alt="Decor">
 
         
         <img src="images/decor1.png" class="decoration decor1" alt="Decor">
@@ -44,6 +47,8 @@
         <div class="center-container">
             <img src="images/splash.png" class="splash-bg" alt="Splash">
             <a href="#">
+
+
       <!-- Drop as many sparkles in as you need and scope the speed -->
       <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -76,6 +81,7 @@
         />
       </svg>
       <!-- End sparkles -->
+
       <span>
         <button class="play-btn" onclick="handleClick()">
                 <img src="images/play-btn.png" alt="Play">
@@ -86,9 +92,31 @@
         </div>
     </div>
 
+    <div class="center-container">
 
-    
 
+    <div id="game-window" class="window-box">
+        <div class="window-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="window-title">Wazzupp</span>
+        </div>
+        <div class="window-content">
+ <h1>Do you want to play again?</h1>
+          <div class="button-group"> 
+              <button class="yes" id="yes-btn" alt="option">
+                Yes
+              </button>
+
+or
+              <button class="no" id="no-btn" alt="option">
+                  No
+                </button>
+            </div>
+    </div>
+
+</div>
     
     
 <script src="js/script.js"></script>

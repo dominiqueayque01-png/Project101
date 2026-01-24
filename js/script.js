@@ -1,8 +1,54 @@
 
 
 function handleClick() {
-            alert("Hello from the mobile site!");
+    const btn = document.querySelector('.play-btn');
+    const btnSound = document.getElementById('btn-sound');
+    
+    // Elements to swap
+    const windowTab = document.getElementById('game-window');
+    const cat = document.getElementById('cat-btn');
+    const dog = document.getElementById('dog-btn');
+    const pow1 = document.getElementById('pow1');
+    const pow2 = document.getElementById('pow2');
+
+    // 1. PLAY CLICK EFFECT
+    btn.classList.add('clicked');
+    if(btnSound) {
+        btnSound.currentTime = 0;
+        btnSound.play();
+    }
+
+    // 2. MAKE ANIMALS LEAVE (Immediately)
+    if (cat) cat.classList.add('slide-out-left');
+    if (dog) dog.classList.add('slide-out-right');
+    if (pow1) pow1.classList.add('slide-out-left');
+    if (pow2) pow2.classList.add('slide-out-right');
+
+    stopCat(); // Stop audio if playing
+    stopDog();
+
+    // 3. SWAP BUTTON FOR WINDOW (After small delay)
+    setTimeout(() => {
+        // Hide Button
+        btn.classList.add('vanish');
+        
+        // Show Window
+        if (windowTab) {
+            windowTab.classList.add('show');
         }
+    }, 300); // 300ms delay feels smooth
+}
+
+
+/*===============================
+    INTRO AUDIO JS  
+===============================*/
+
+// Play the audio when the page loads
+
+/*================================
+    SPIN BUTTONS JS  
+=================================*/
 
 // We define the timer variable outside so we can access it anytime
 // --- GLOBAL VARIABLES ---
