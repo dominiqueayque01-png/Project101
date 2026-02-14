@@ -201,7 +201,7 @@ window.addEventListener('load', function() {
             
             // 1. Disable the button (Make it unavailable)
             noBtn.disabled = true;
-            noBtn.innerText = "no"; // Optional: Change text to show it's dead
+            noBtn.innerText = "Yes"; // Optional: Change text to show it's dead
             
             // 2. Show the Toast
             toast.className = "show";
