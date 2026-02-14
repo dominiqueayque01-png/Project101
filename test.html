@@ -8,16 +8,28 @@
     <link href="test.css" rel="stylesheet">
 </head>
 <body>
-<div class="sky">
-  <div class="cloud-track">
-    <img src="images/bottom-clouds.png">
-    <img src="images/bottom-clouds.png  ">
-  </div>
-</div>
-
-
-<div class="sky">
-  <img src="images/top-clouds.png" class="cloud">
+<div id="third-window" class="window-box">
+    <div class="window-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+    </div>
+    
+    <div class="window-content">
+        <h2>Set the Date! 📅</h2>
+        
+        <form id="date-form" onsubmit="return false;">
+            <label class="retro-label">When?</label>
+            <input type="datetime-local" id="date-input" class="retro-input" required>
+            
+            <label class="retro-label">Where / Food?</label>
+            <input type="text" id="food-input" class="retro-input" placeholder="e.g. Sushi, Coffee..." required>
+            
+            <button class="submit-btn" onclick="handleFinalSubmit()">
+                Send Invite 💌
+            </button>
+        </form>
+    </div>
 </div>
 
 

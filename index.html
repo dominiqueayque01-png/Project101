@@ -10,12 +10,42 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap" rel="stylesheet">
 <link href="style/style.css" rel="stylesheet">
+<style>
+  /* Sixth window styles (matches other window-box design) */
+  #sixth-window {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    text-align: center;
+    z-index: 50;
+    width: auto;
+  }
+  /* Two-frame rock animation (discrete frames) */
+  @keyframes rock {
+    0% { transform: rotate(-8deg); }
+    100% { transform: rotate(8deg); }
+  }
+  .rock {
+    transform-origin: center bottom;
+    animation: rock 300ms steps(2, end) infinite;
+    display: inline-block;
+  }
+ </style>
 </head>
 <body>
 
     <div class="phone-screen">
         <!--Audio of the page-->
+        <audio id="next-sound" src="audio/next.mp3"></audio>
         <audio id="btn-sound" src="audio/FAHH.mp3"></audio>
+        <audio id="img-sound" src="audio/upgrade.mp3"></audio>
+        <audio id="final-sound" src="audio/hooray.mp3"></audio>
 
         <!--Header and footer design-->
         <img src="images/decor1.png" class="decoration top-decor" alt="decoration">
@@ -103,23 +133,135 @@
             <span class="window-title">Wazzupp</span>
         </div>
         <div class="window-content">
- <h1>Do you want to play again?</h1>
+          <h1>U good, my love?</h1>
           <div class="button-group"> 
-              <button class="yes" id="yes-btn" alt="option">
+              <button class="yes" id="yesBtn" alt="option">
                 Yes
               </button>
-
-or
-              <button class="no" id="no-btn" alt="option">
-                  No
+                or
+              <button class="no" id="noBtn" alt="option">
+                  uu
                 </button>
             </div>
     </div>
 
 </div>
-    
-    
+
+<div id="second-window" class="window-box">
+    <div class="window-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="dot green"></span>
+    </div>
+    <div class="window-content">
+        <img src="images/sadayk.png" class="window-img" alt="Success">
+        <h1>I'm sorry :&lt;</h1>
+        <div class="button-group"> 
+              <button class="yes" id="nextBtn" alt="option">
+                Next
+              </button>
+            </div>
+      </div>
+</div>
+
+
+
+
+
+<!-- Third window: shown after second-window's Next is clicked -->
+<div id="third-window" class="window-box">
+    <div class="window-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="dot green"></span>
+    </div>
+    <div class="window-content">
+        <img src="images/happy.png" class="window-img" alt="">
+        <p>I made you feel disappointed for this valentine's day :&lt;</p>
+        <div class="button-group"> 
+              <button class="yes" id="nextBtn2" alt="option">
+                Next
+              </button>
+            </div>
+      </div>
+</div>
+
+<!-- Fourth window: shown after third-window's Next is clicked -->
+<div id="fourth-window" class="window-box">
+    <div class="window-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="dot green"></span>
+    </div>
+    <div class="window-content">
+        <img src="images/final.png" class="window-img" alt="">
+        <h1>For you</h1>
+        <p>Babawi ako kaya I hope this makes you smile and reminds you how much I love you.</p>
+        <div class="button-group"> 
+              <button class="yes" id="nextBtn3" alt="option">
+                Done
+              </button>
+            </div>
+      </div>
+</div>
+
+<!-- Fifth window: shown after fourth-window's Done is clicked -->
+<div id="fifth-window" class="window-box">
+    <div class="window-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="dot green"></span>
+    </div>
+    <div class="window-content">
+        <img src="images/celebrate.png" class="window-img" alt="">
+        <h1>Surprise!</h1>
+
+        <!-- Mini-game: cycle images on button click -->
+        <div class="mini-game">
+          <div class="image-content">
+            <img id="mini-img" src="game/image-1.png" alt="mini" style="max-width:180px; max-height:180px;">
+          </div>
+          <div class="button-group">
+            <button class="yes" id="cycleBtn" alt="option">Next Image</button>
+          </div>
+
+          <!-- Final message and next button (hidden until last image) -->
+          <p id="finalMsg" style="display:none; margin-top:12px; font-weight:bold; font-size: large;">Happy Valentine's Day!</p>
+          <div class="button-group" id="finalNextWrap" style="display:none;">
+            <button class="yes" id="finalNextBtn" alt="option">Next</button>
+          </div>
+        </div>
+
+        <div class="button-group" id="nextBtn4Wrap" style="display:none;"> 
+              <button class="yes" id="nextBtn4" alt="option">
+                Finish
+              </button>
+            </div>
+      </div>
+</div>
+
+<!-- Baby image shown after Finish is clicked -->
+<div id="ending-baby" style="display:none; text-align:center; margin-top:12px;">
+  <img src="images/couple.png" alt="baby" style="max-width:220px; height:auto;">
+</div>
+
+<!-- Again button for restart -->
+<div id="again-btn-wrap" style="display:none; text-align:center; margin-top:20px;">
+  <button class="yes" id="againBtn" alt="option">Again</button>
+</div>
+
 <script src="js/script.js"></script>
 
+<!-- Sixth window shown after Finish — matches other window-box design -->
+
+
+  <!--for toast nitof!-->
+<div id="toast">weee 😿</div>    
+
+<script src="js/script.js"></script>
 </body>
 </html>

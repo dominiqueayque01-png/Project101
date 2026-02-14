@@ -863,3 +863,61 @@
 .yes:active, .no:active{
     transform: scale(0.95);
 }   
+
+.window-img {
+    width: 100%;       /* Fills the width of the window */
+    max-width: 200px;  /* Prevents it from getting too huge */
+    height: auto;      /* Keeps the aspect ratio (doesn't squish) */
+    border-radius: 8px; /* Smooth corners */
+    margin-bottom: 15px; /* Adds space between image and text */
+    display: block;    /* Helps with centering */
+    margin-left: auto; /* Center the image */
+    margin-right: auto;
+    margin-top: 1px;
+}
+
+/*FOR TOAST NOTIF!*/
+/* 1. TOAST NOTIFICATION */
+#toast {
+    visibility: hidden; /* Hidden by default */
+    min-width: 250px;
+    background-color: #333; /* Dark background */
+    color: #fff; /* White text */
+    text-align: center;
+    border-radius: 50px; /* Pill shape */
+    padding: 16px;
+    position: fixed; /* Stays in place when scrolling */
+    z-index: 1000; /* On top of everything */
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%); /* Center it perfectly */
+    font-size: 1rem;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+}
+
+/* Class to show the toast */
+#toast.show {
+    visibility: visible;
+    /* Fade in, wait 2.5s, then fade out */
+    animation: fadein 0.5s, fadeout 0.5s 2.5s forwards;
+}
+
+/* 2. DISABLED BUTTON STYLE */
+.no:disabled {
+    background-color: #cccccc; /* Gray */
+    color: #666666;
+    border-color: #999999;
+    cursor: not-allowed; /* Shows 'stop' symbol on mouse */
+    transform: scale(1) !important; /* Stop any hover effects */
+}
+
+/* --- KEYFRAMES --- */
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
